@@ -1,0 +1,43 @@
+{
+    "name": "charonlab/charon-clock",
+    "description": "Implementation of system clock support based on the PSR-20 standard.",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "psr/clock": "dev-master"
+    },
+    "require-dev": {
+        "charonlab/coding-standard": "1.2.x-dev",
+        "phpunit/phpunit": "10.5.x-dev",
+        "vimeo/psalm": "6.x-dev"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Charon\\Clock\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Charon\\Tests\\Unit\\": "tests/unit/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.2.15"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "lint-check": "phpcs",
+        "lint-fix": "phpcbf",
+        "static-analysis": "psalm --shepherd --stats",
+        "test": "phpunit --colors=always"
+    }
+}
