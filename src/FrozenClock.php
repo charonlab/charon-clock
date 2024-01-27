@@ -49,16 +49,14 @@ class FrozenClock implements Clock
     /**
      * @inheritDoc
      */
-    public function now(): DateTimeImmutable
-    {
+    public function now(): DateTimeImmutable {
         return $this->datetime;
     }
 
     /**
      * @inheritDoc
      */
-    public function withTimeZone(\DateTimeZone|string $timezone): static
-    {
+    public function withTimeZone(\DateTimeZone|string $timezone): static {
         if (\is_string($timezone)) {
             try {
                 $timezone = new \DateTimeZone($timezone);
@@ -76,8 +74,7 @@ class FrozenClock implements Clock
     /**
      * @inheritDoc
      */
-    public function sleep(float|int $seconds): void
-    {
+    public function sleep(float|int $seconds): void {
         $wholeSeconds = \floor($seconds);
         $microSeconds = \round(($seconds - $wholeSeconds) * 1E6);
 
@@ -88,7 +85,7 @@ class FrozenClock implements Clock
         }
 
         if ($microSeconds > 0) {
-            if($dt = $this->datetime->modify("$microSeconds microsecond")) {
+            if ($dt = $this->datetime->modify("$microSeconds microsecond")) {
                 $this->datetime = $dt;
             }
         }

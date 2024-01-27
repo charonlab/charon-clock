@@ -22,16 +22,14 @@ use Psr\Clock\ClockInterface;
 #[CoversClass(FrozenClockTest::class)]
 class FrozenClockTest extends TestCase
 {
-    public function testInstanceOfClockInterface(): void
-    {
+    public function testInstanceOfClockInterface(): void {
         $clock = new FrozenClock();
 
         self::assertInstanceOf(Clock::class, $clock);
         self::assertInstanceOf(ClockInterface::class, $clock);
     }
 
-    public function testWithTimeZone(): void
-    {
+    public function testWithTimeZone(): void {
         $clock = new FrozenClock();
         $newClock = $clock->withTimeZone(new \DateTimeZone('Europe/Warsaw'));
 
@@ -39,8 +37,7 @@ class FrozenClockTest extends TestCase
         self::assertSame('Europe/Warsaw', $newClock->now()->getTimezone()->getName());
     }
 
-    public function testTimeDoesNotChange(): void
-    {
+    public function testTimeDoesNotChange(): void {
         $clock = new FrozenClock();
 
         $first = $clock->now()->format('U.u');
@@ -50,8 +47,7 @@ class FrozenClockTest extends TestCase
         self::assertSame($first, $second);
     }
 
-    public function testSleep(): void
-    {
+    public function testSleep(): void {
         $clock = new FrozenClock('2024-01-27 23:53:00.999Z');
         $clock->sleep(2.002001);
 
