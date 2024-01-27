@@ -16,10 +16,11 @@ final class SystemClock implements Clock
     private \DateTimeZone $timezone;
 
     /**
+     * @param \DateTimeZone|non-empty-string $timezone
      * @throws \Charon\Clock\ClockException
      */
-    public function __construct(\DateTimeZone|string $timezone = null) {
-        $this->timezone = \is_string($timezone ??= self::DEFAULT_TIMEZONE)
+    public function __construct(\DateTimeZone|string $timezone = Clock::DEFAULT_TIMEZONE) {
+        $this->timezone = \is_string($timezone)
             ? $this->withTimeZone($timezone)->timezone
             : $timezone;
     }
@@ -27,13 +28,12 @@ final class SystemClock implements Clock
     /**
      * @inheritDoc
      */
-    public function withTimeZone(\DateTimeZone|string $timezone): static
-    {
+    public function withTimeZone(\DateTimeZone|string $timezone): static {
         if (\is_string($timezone)) {
             try {
                 $timezone = new \DateTimeZone($timezone);
             } catch (\Exception $e) {
-                throw new ClockException($e->getMessage(), $e->getCode(), $e);
+                throw new ClockException($e->getMessage(), (int) $e->getCode(), $e);
             }
         }
 
@@ -46,26 +46,24 @@ final class SystemClock implements Clock
     /**
      * @inheritDoc
      */
-    public function sleep(float|int $seconds): void
-    {
+    public function sleep(float|int $seconds): void {
         if (0 < $s = (int) $seconds) {
             \sleep($s);
         }
 
         if (0 < $us = $seconds - $s) {
-            \usleep((int)($us * 1E6));
+            \usleep((int) ($us * 1E6));
         }
     }
 
     /**
      * @inheritDoc
      */
-    public function now(): \DateTimeImmutable
-    {
+    public function now(): \DateTimeImmutable {
         try {
             return new \DateTimeImmutable('now', $this->timezone);
         } catch (\Exception $exception) {
-            throw new ClockException($exception->getMessage(), $exception->getCode(), $exception);
+            throw new ClockException($exception->getMessage(), (int) $exception->getCode(), $exception);
         }
     }
 }

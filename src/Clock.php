@@ -26,7 +26,7 @@ interface Clock extends ClockInterface
     /**
      * Return an instance with the specified TimeZone.
      *
-     * @param \DateTimeZone|string $timezone TimeZone
+     * @param \DateTimeZone|non-empty-string $timezone TimeZone
      * @return $this
      *
      * @throws \Charon\Clock\ClockException

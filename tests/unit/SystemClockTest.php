@@ -23,16 +23,14 @@ use Psr\Clock\ClockInterface;
 #[CoversClass(SystemClock::class)]
 class SystemClockTest extends TestCase
 {
-    public function testInstanceOfClockInterface(): void
-    {
+    public function testInstanceOfClockInterface(): void {
         $clock = new SystemClock();
 
         self::assertInstanceOf(Clock::class, $clock);
         self::assertInstanceOf(ClockInterface::class, $clock);
     }
 
-    public function testSleep(): void
-    {
+    public function testSleep(): void {
         $clock = new SystemClock();
 
         $before = \microtime(true);
@@ -42,8 +40,7 @@ class SystemClockTest extends TestCase
         self::assertGreaterThanOrEqual($before + 1.25, $after);
     }
 
-    public function testWithTimeZone(): void
-    {
+    public function testWithTimeZone(): void {
         $clock = new SystemClock();
         $newClock = $clock->withTimeZone(new \DateTimeZone('Europe/Warsaw'));
 
@@ -51,14 +48,12 @@ class SystemClockTest extends TestCase
         self::assertSame('Europe/Warsaw', $newClock->now()->getTimezone()->getName());
     }
 
-    public function testWithTimeZoneUnknownException(): void
-    {
+    public function testWithTimeZoneUnknownException(): void {
         self::expectException(ClockException::class);
         new SystemClock('zaqw');
     }
 
-    public function testNow(): void
-    {
+    public function testNow(): void {
         $clock = new SystemClock();
 
         $before = new \DateTimeImmutable();
