@@ -47,6 +47,8 @@ jobs:
         with:
           coverage: none
           php-version: '8.2'
+          tools: cs2pr
+
       - name: Install dependencies
         uses: ramsey/composer-install@v2
 
