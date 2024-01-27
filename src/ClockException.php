@@ -13,5 +13,4 @@ namespace Charon\Clock;
 
 class ClockException extends \Exception
 {
-
 }
