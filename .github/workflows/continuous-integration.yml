@@ -32,11 +32,10 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ matrix.operating-system }}
+    runs-on: "ubuntu-latest"
     strategy:
       matrix:
         php-versions: [ '8.2', '8.3' ]
-        operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
 
     steps:
       - name: Checkout repository
