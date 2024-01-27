@@ -11,6 +11,7 @@
 
 namespace Charon\Clock;
 
+use DateTimeImmutable;
 use Psr\Clock\ClockInterface;
 
 interface Clock extends ClockInterface
@@ -18,14 +19,19 @@ interface Clock extends ClockInterface
     public const DEFAULT_TIMEZONE = 'UTC';
 
     /**
+     * @throws \Charon\Clock\ClockException
+     */
+    public function now(): DateTimeImmutable;
+
+    /**
      * Return an instance with the specified TimeZone.
      *
-     * @param \DateTimeZone $timeZone TimeZone
+     * @param \DateTimeZone|string $timezone TimeZone
      * @return $this
      *
      * @throws \Charon\Clock\ClockException
      */
-    public function withTimeZone(\DateTimeZone $timeZone): static;
+    public function withTimeZone(\DateTimeZone|string $timezone): static;
 
     /**
      * Delays the program execution for the given number of seconds.
