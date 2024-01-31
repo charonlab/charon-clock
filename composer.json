@@ -3,6 +3,9 @@
     "description": "Implementation of system clock support based on the PSR-20 standard.",
     "license": "MIT",
     "type": "library",
+    "provide": {
+        "psr/clock-implementation": "1.0"
+    },
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "psr/clock": "dev-master"
