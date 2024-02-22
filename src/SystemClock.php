@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the charonlab/charon-routing.
+ * This file is part of the charonlab/charon-clock.
  *
  * Copyright (C) 2023-2024 Charon Lab Development Team
  *
