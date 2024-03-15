@@ -10,7 +10,7 @@
     "require-dev": {
         "charonlab/coding-standard": "1.2.x-dev",
         "charonlab/static-analysis": "dev-master",
-        "phpunit/phpunit": "11.1.x-dev"
+        "charonlab/testing": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
