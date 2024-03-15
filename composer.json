@@ -1,10 +1,10 @@
 {
     "name": "charonlab/charon-clock",
-    "description": "Implementation of system clock support based on the PSR-20 standard.",
+    "description": "Provides flexible tools for handling time-related operations in PHP applications.",
     "license": "MIT",
     "type": "library",
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "php": ">=8.1",
         "psr/clock": "dev-master"
     },
     "require-dev": {
