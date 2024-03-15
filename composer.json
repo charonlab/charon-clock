@@ -9,8 +9,8 @@
     },
     "require-dev": {
         "charonlab/coding-standard": "1.2.x-dev",
-        "charonlab/testing": "^1.0",
-        "vimeo/psalm": "6.x-dev"
+        "charonlab/static-analysis": "dev-master",
+        "charonlab/testing": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
